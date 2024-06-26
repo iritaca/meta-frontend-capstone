@@ -1,0 +1,40 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 16px;
+  max-width: 1008px;
+  margin-inline: auto;
+}
+.navList {
+  display: flex;
+  gap: 16px;
+  .navItem {
+    position: relative;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 20px;
+    text-transform: capitalize;
+
+    &:hover {
+      color: var(--primary-green);
+    }
+    &.isActive {
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        border: 1px solid var(--primary-green);
+        width: 0%;
+        animation: activeLine 0.3s ease forwards;
+      }
+    }
+  }
+}
+
+@keyframes activeLine {
+  to {
+    width: 100%;
+  }
+}

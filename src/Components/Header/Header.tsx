@@ -25,7 +25,8 @@ const HeaderNav = () => {
             }`}
             onClick={() => setSelected(navItem.value)}
           >
-            {navItem.title}
+            {/* @Dev - this should be replaced by React.Route */}
+            <a href={`/${navItem.value}`}>{navItem.title}</a>
           </li>
         ))}
       </ul>

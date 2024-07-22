@@ -1,0 +1,80 @@
+.carouselContainer {
+  margin-top: 8px;
+  padding-bottom: 8px;
+  overflow-x: auto;
+}
+.carousel {
+  --carouselGap: 24px;
+  display: flex;
+  gap: var(--carouselGap);
+  height: 445px;
+
+  //   overflow: hidden;
+}
+.arrow {
+  height: 100%;
+  width: 32px;
+  border-radius: 6px;
+  &:hover {
+    cursor: pointer;
+  }
+  &.left {
+    // left: var(--arrowPosition);
+  }
+  &.right {
+    // right: var(--arrowPosition);
+  }
+
+  &:not(.isVisible) {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+.highlights {
+  .header {
+    display: flex;
+    justify-content: space-between;
+  }
+  .highlightsButtons {
+    display: flex;
+    gap: 8px;
+  }
+}
+
+.highlightCard {
+  flex-basis: calc(calc(100% / 3) - var(--carouselGap));
+  flex-shrink: 0;
+  background-color: #e0e0e0;
+  border-radius: 3px;
+  .highlightData {
+    padding: 16px;
+    > * + * {
+      margin-top: 16px;
+    }
+  }
+  .imageContainer {
+    height: 234px;
+    border: 1px dotted red;
+  }
+  .header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .description {
+    display: -webkit-box;
+    max-width: 200px;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .link {
+    display: inline-block;
+    margin-top: 32px;
+    > span + span {
+      margin-left: 8px;
+    }
+  }
+}

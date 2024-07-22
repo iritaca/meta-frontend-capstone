@@ -33,3 +33,7 @@ a {
   text-decoration: none;
   color: inherit;
 }
+
+:root {
+  --desktopWidth: 1020px;
+}

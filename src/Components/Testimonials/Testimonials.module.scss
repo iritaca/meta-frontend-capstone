@@ -1,0 +1,19 @@
+.testimonials {
+  display: flex;
+  gap: 24px;
+}
+
+.rating {
+  display: flex;
+  gap: 4px;
+  .ratingStar {
+    opacity: 0.45;
+    &.active {
+      color: var(--primary-yellow);
+      opacity: 1;
+    }
+    &:not(.active) {
+      color: var(--primary-green);
+    }
+  }
+}

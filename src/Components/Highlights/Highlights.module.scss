@@ -1,34 +1,13 @@
 .carouselContainer {
   margin-top: 8px;
   padding-bottom: 8px;
-  overflow-x: auto;
 }
 .carousel {
   --carouselGap: 24px;
   display: flex;
   gap: var(--carouselGap);
   height: 445px;
-
-  //   overflow: hidden;
-}
-.arrow {
-  height: 100%;
-  width: 32px;
-  border-radius: 6px;
-  &:hover {
-    cursor: pointer;
-  }
-  &.left {
-    // left: var(--arrowPosition);
-  }
-  &.right {
-    // right: var(--arrowPosition);
-  }
-
-  &:not(.isVisible) {
-    opacity: 0;
-    pointer-events: none;
-  }
+  width: calc(100% + var(--carouselGap));
 }
 
 .highlights {

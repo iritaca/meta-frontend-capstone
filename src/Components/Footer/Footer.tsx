@@ -1,44 +1,62 @@
+import footerLogo from "../../assets/images/footer_logo.png";
+import { footerListProps } from "../../types";
 import Styles from "./Footer.module.scss";
 
-const FooterColumn = ({
-  title,
-  list,
-}: {
-  title: string;
-  list: { title: string; content?: React.ReactNode }[];
-}) => {
+const footerList: footerListProps[] = [
+  {
+    title: "Get to know us",
+    list: [
+      { content: "highlights", href: "/highlights" },
+      { content: "testimonials", href: "/testimonials" },
+      { content: "about", href: "/about" },
+    ],
+  },
+  {
+    title: "Connect",
+    list: [
+      { content: "face", href: "https:www/facebook.com" },
+      { content: "insta", href: "https:www/instagram.com" },
+      { content: "x", href: "https:www/x.com" },
+    ],
+  },
+  {
+    title: "Contact",
+    list: [{ content: "Chicago" }],
+  },
+];
+
+const FooterColumn = ({ list }: { list: footerListProps[] }) => {
   return (
-    <>
-      <h6>{title}</h6>
-      <ul className={!!list[0].content ? Styles.row : Styles.column}>
-        {list.map((item) => {
-          let itemContent = item.content;
-          if (!itemContent) itemContent = item.title;
-          return (
-            <li>
-              <a href={item.title}>{itemContent}</a>
-            </li>
-          );
-        })}
-      </ul>
-    </>
+    <div className={Styles.footerColumns}>
+      {list.map((col) => {
+        return (
+          <div className={Styles.footerColumn}>
+            <h6>{col.title}</h6>
+            <ul
+              className={col.title === "Connect" ? Styles.horizontalList : ""}
+            >
+              {col.list.map((listItem) => {
+                return (
+                  <li>
+                    <a href={listItem.href}> {listItem.content}</a>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        );
+      })}
+    </div>
   );
 };
 
 const Footer = () => {
   return (
-    <footer>
+    <footer className={Styles.footer}>
       <figure className={Styles.footerLogo}>
-        <img src="" alt="Little Lemon footer logo" />
+        <img src={footerLogo} alt="Little Lemon footer logo" />
       </figure>
-      <FooterColumn
-        title="Get to know us"
-        list={[
-          { title: "highlights" },
-          { title: "testimonials" },
-          { title: "about" },
-        ]}
-      />
+      <FooterColumn list={footerList} />
     </footer>
   );
 };

@@ -1,5 +1,6 @@
 import Styles from "./Highlights.module.scss";
 import { highlightsData } from "../../types";
+import Button from "../Button/Button";
 
 const highlights: highlightsData[] = [
   {
@@ -19,15 +20,6 @@ const highlights: highlightsData[] = [
     link: "",
     img: { src: "", alt: "" },
     highlighted: false,
-  },
-  {
-    title: "tapas",
-    price: "13.99",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam",
-    link: "",
-    img: { src: "", alt: "" },
-    highlighted: true,
   },
   {
     title: "tapas",
@@ -79,29 +71,6 @@ const HighlightCard = ({ card }: { card: highlightsData }) => {
   );
 };
 
-const CarouselArrow = ({
-  onClick,
-  isVisible,
-  direction,
-  disabled,
-}: {
-  onClick: () => void;
-  isVisible: boolean;
-  disabled?: boolean;
-  direction: "left" | "right";
-}) => {
-  return (
-    <button
-      className={`${Styles.arrow} ${
-        isVisible ? Styles.isVisible : Styles.hide
-      } ${direction === "left" ? Styles.left : Styles.right}`}
-      disabled={disabled}
-    >
-      <span className={Styles.arrow} />
-    </button>
-  );
-};
-
 const Carousel = ({ list }: { list: highlightsData[] }) => {
   return (
     <div className={Styles.carouselContainer}>
@@ -122,11 +91,7 @@ const HighLights = () => {
       <div className={Styles.header}>
         <h3 className={Styles.highlightsTitle}>This week specials</h3>
         <div className={Styles.highlightsButtons}>
-          {/* should be visible only if scrollLeft = 0 && content is bigger than container */}
-          <CarouselArrow onClick={() => {}} isVisible direction="left" />
-          {/* should be visible only if  content is bigger than container */}
-          <CarouselArrow onClick={() => {}} isVisible direction="right" />
-          <button className={Styles.highlightButton}>Menu</button>
+          <Button size="small">Menu</Button>
         </div>
       </div>
       <Carousel list={highlights} />

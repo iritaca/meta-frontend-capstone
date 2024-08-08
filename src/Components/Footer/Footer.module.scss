@@ -1,0 +1,39 @@
+.footer {
+  display: flex;
+  justify-content: space-between;
+  max-width: var(--desktopWidth);
+  margin: 0 auto;
+  padding-bottom: 64px;
+  padding-top: 32px;
+}
+.footerLogo {
+  flex: 1;
+  img {
+    max-width: 100px;
+  }
+}
+
+.footerColumns {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+}
+
+.footerColumn {
+  h6 + ul {
+    margin-top: 16px;
+  }
+  ul > li {
+    text-transform: capitalize;
+    + li {
+      margin-top: 8px;
+    }
+  }
+  .horizontalList {
+    display: flex;
+  }
+  .horizontalList li + li {
+    margin-top: 0px;
+    margin-left: 8px;
+  }
+}

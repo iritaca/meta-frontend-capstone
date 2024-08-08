@@ -17,3 +17,8 @@ export interface testimonialData extends Card {
   rating: number;
   review: string;
 }
+
+export interface footerListProps {
+  title?: string;
+  list: { content: React.ReactNode; href?: string }[];
+}

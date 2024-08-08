@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 
 import Styles from "./Hero.module.scss";
+import Button from "../Button/Button";
+import SidePanel from "../SidePanel/SidePanel";
 const Hero = () => {
+  const [showPanel, setShowPanel] = useState(false);
   return (
     <section className={Styles.hero}>
       <div className={Styles.heroText}>
@@ -11,11 +14,21 @@ const Hero = () => {
           We are a family owned mediterranean restaurant, focused on traditional
           recipes served with a modern twist.
         </p>
-        <button>Reserve a table</button>
+
+        <Button onClick={() => setShowPanel(true)}>Reserve a table</Button>
       </div>
       <figure className={Styles.heroImageContainer}>
         <img src="" alt="" />
       </figure>
+      {showPanel && (
+        <SidePanel
+          variant="reserve"
+          onClose={() => setShowPanel(false)}
+          onSave={() => {
+            // @Dev - add here the action after save is clicked
+          }}
+        />
+      )}
     </section>
   );
 };

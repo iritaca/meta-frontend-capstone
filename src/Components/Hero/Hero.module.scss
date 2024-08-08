@@ -1,3 +1,5 @@
+@import "../../Styles/mixins.module.scss";
+
 .hero {
   --heroHeight: 620px;
   --heroPadding: 64px;
@@ -9,16 +11,11 @@
   padding-top: var(--heroPadding);
   padding-bottom: var(--heroPadding);
 
-  &:after {
-    content: "";
-    background-color: var(--primary-green);
-    position: absolute;
-    top: calc(40px + 32px + 16px);
-    left: 0;
-    height: var(--heroHeight);
-    width: 100%;
-    z-index: -1;
-  }
+  @include sectionBg(
+    $bgColor: var(--primary-green),
+    $height: var(--heroHeight),
+    $topPosition: calc(40px + 32px + 16px)
+  );
 
   .heroText {
     height: 100%;

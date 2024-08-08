@@ -1,0 +1,12 @@
+@mixin sectionBg($topPosition, $bgColor, $height) {
+  &:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 100%;
+    z-index: -1;
+    height: #{$height};
+    top: #{$topPosition};
+    background-color: #{$bgColor};
+  }
+}

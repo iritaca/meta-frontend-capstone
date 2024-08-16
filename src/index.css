@@ -37,3 +37,7 @@ a {
 :root {
   --desktopWidth: 1020px;
 }
+
+html {
+  scrollbar-gutter: stable;
+}

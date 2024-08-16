@@ -1,9 +1,10 @@
 import { useState } from "react";
 import LogoSvg from "../../assets/images/Logo.svg";
 import Styles from "./Header.module.scss";
+import { Link } from "react-router-dom";
 
 const NAV_OPTIONS: { title: string; value: string }[] = [
-  { title: "home", value: "home" },
+  { title: "home", value: "" },
   { title: "about", value: "about" },
   { title: "menu", value: "menu" },
   { title: "reservations", value: "reserve" },
@@ -12,7 +13,7 @@ const NAV_OPTIONS: { title: string; value: string }[] = [
 ];
 
 const HeaderNav = () => {
-  const [selected, setSelected] = useState("home");
+  const [selected, setSelected] = useState("");
 
   return (
     <nav className={Styles.navContainer}>
@@ -26,7 +27,7 @@ const HeaderNav = () => {
             onClick={() => setSelected(navItem.value)}
           >
             {/* @Dev - this should be replaced by React.Route */}
-            <a href={`/${navItem.value}`}>{navItem.title}</a>
+            <Link to={`/${navItem.value}`}>{navItem.title}</Link>
           </li>
         ))}
       </ul>

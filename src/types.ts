@@ -6,11 +6,11 @@ interface Card {
   };
 }
 
-export interface highlightsData extends Card {
-  description: string;
+export interface dish extends Card {
   price: string;
-  link: string;
   highlighted?: boolean;
+  description: string;
+  link: string;
 }
 
 export interface testimonialData extends Card {
@@ -21,4 +21,15 @@ export interface testimonialData extends Card {
 export interface footerListProps {
   title?: string;
   list: { content: React.ReactNode; href?: string }[];
+}
+
+export interface reservation {
+  name: string;
+  email: string;
+  seatOptions: string;
+  dinners: string;
+  ocassion: string;
+  date: string;
+  time: string;
+  comments: string;
 }

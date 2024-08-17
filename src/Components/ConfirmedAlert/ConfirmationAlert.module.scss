@@ -1,0 +1,49 @@
+.confirmation {
+  --timing: 200ms;
+  position: fixed;
+  z-index: 3;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white;
+  padding: 20px 30px;
+  border-radius: 6px;
+  max-width: 560px;
+  &.show {
+    animation: slideMessage var(--timing) ease-in forwards;
+  }
+  &.hide {
+    animation: slideOut var(--timing) ease-in forwards;
+  }
+}
+
+@keyframes slideMessage {
+  0% {
+    transform: translate(-50%, -100%);
+  }
+  100% {
+    transform: translate(-50%, 0);
+  }
+}
+@keyframes slideOut {
+  0% {
+    transform: translate(-50%, 0);
+  }
+  100% {
+    transform: translate(-50%, -150%);
+  }
+}
+
+.userContainer {
+  .userName {
+    font-weight: 600;
+  }
+  div {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.personalMsg {
+  margin-top: 8px;
+}

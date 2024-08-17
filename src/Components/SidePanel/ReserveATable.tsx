@@ -2,43 +2,44 @@ import React, { useState } from "react";
 import Styles from "./ReserveTable.module.scss";
 import { FormInput, FormSelect } from "../Form/FormElements";
 import Button from "../Button/Button";
+import ConfirmationAlert from "../ConfirmedAlert/ConfirmedAlert";
+import { reservation } from "../../types";
 
 interface FormProps {
   onCancel: () => void;
   onSave: () => void;
 }
 
-const Alert = () => {
-  return <div className={Styles.alert}>Saved</div>;
-};
-
 const ReserveTable = ({ onCancel, onSave }: FormProps) => {
-  const [dataSent, setDataSent] = useState(false);
-  const [formData, setFormData] = useState({
+  const [submitSuccess, setSubmitSuccess] = useState<boolean | null>(null);
+  const [formData, setFormData] = useState<reservation>({
     name: "",
     email: "",
     seatOptions: "",
     dinners: "1",
     ocassion: "",
     date: "",
-    time: "",
+    time: "16:00",
     comments: "",
   });
+
+  const saveIsDisabled =
+    formData.name === "" || formData.email === "" || formData.date === "";
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (saveIsDisabled) return;
+    setSubmitSuccess(true);
+
+    onSave?.();
+  };
 
   const handleChange = (e: any) => {
     const { name, value } = e.target;
 
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
-  const handleSubmit = (e: any) => {
-    e.preventDefault();
-    // console.log(formData);
-    // Display an alert when all the required elements in the form are filled
-    setDataSent(true);
-    onSave?.();
-  };
 
-  const saveIsDisabled = formData.name === "" || formData.email === "";
   return (
     <>
       <form onSubmit={handleSubmit} className={Styles.formContainer}>
@@ -56,15 +57,44 @@ const ReserveTable = ({ onCancel, onSave }: FormProps) => {
           onChange={handleChange}
           value={formData.email}
         />
+
         <div className={Styles.halfSpace}>
-          <FormInput label="Seating options" inputId="seatOptions">
-            <FormSelect
-              id="seatOptions"
-              onChange={handleChange}
-              value={formData.seatOptions}
-              options={["--", "indoor", "outdoor"]}
-            />
-          </FormInput>
+          <FormInput
+            label="Select a date"
+            inputId="date"
+            type="date"
+            onChange={handleChange}
+            value={formData.date}
+            isRequired
+          />
+
+          <FormSelect
+            id="time"
+            label="Choose time"
+            onChange={handleChange}
+            value={formData.time}
+            options={[
+              "16:00",
+              "17:00",
+              "18:00",
+              "19:00",
+              "20:00",
+              "21:00",
+              "22:00",
+            ]}
+            isRequired
+          />
+        </div>
+
+        <div className={Styles.halfSpace}>
+          <FormSelect
+            id="seatOptions"
+            label="Seating options"
+            onChange={handleChange}
+            value={formData.seatOptions}
+            options={["--", "indoor", "outdoor"]}
+          />
+
           <FormInput
             label="Number of dinners"
             inputId="dinners"
@@ -73,42 +103,15 @@ const ReserveTable = ({ onCancel, onSave }: FormProps) => {
             type="number"
           />
         </div>
-        <FormInput label="Special ocassion" inputId="ocassion">
-          <FormSelect
-            id="ocassion"
-            onChange={handleChange}
-            value={formData.ocassion}
-            options={["--", "Birthday", "Anniversary"]}
-          />
-        </FormInput>
-        <div className={Styles.halfSpace}>
-          <FormInput label="Select a date" inputId="date">
-            <input
-              id="date"
-              type="date"
-              className={Styles.input}
-              onChange={handleChange}
-              value={formData.date}
-              name="date"
-            />
-          </FormInput>
-          <FormInput label="Choose time" inputId="time">
-            <FormSelect
-              id="time"
-              onChange={handleChange}
-              value={formData.time}
-              options={[
-                "16:00",
-                "17:00",
-                "18:00",
-                "19:00",
-                "20:00",
-                "21:00",
-                "22:00",
-              ]}
-            />
-          </FormInput>
-        </div>
+
+        <FormSelect
+          id="ocassion"
+          label="Special ocassion"
+          onChange={handleChange}
+          value={formData.ocassion}
+          options={["--", "Birthday", "Anniversary"]}
+        />
+
         <FormInput label="Additional comments" inputId="comments">
           <textarea
             className={Styles.textArea}
@@ -126,7 +129,7 @@ const ReserveTable = ({ onCancel, onSave }: FormProps) => {
           </Button>
         </div>
       </form>
-      {dataSent && <Alert />}
+      {submitSuccess && <ConfirmationAlert userData={formData} />}
     </>
   );
 };

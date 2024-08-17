@@ -1,56 +1,16 @@
 import Styles from "./Highlights.module.scss";
-import { highlightsData } from "../../types";
+import { dish } from "../../types";
+import { menuList } from "../../Pages/Menu/Menu";
 import Button from "../Button/Button";
+import { Link } from "react-router-dom";
 
-const highlights: highlightsData[] = [
-  {
-    title: "tapas",
-    price: "13.99",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam",
-    link: "",
-    img: { src: "", alt: "" },
-    highlighted: false,
-  },
-  {
-    title: "tapas",
-    price: "13.99",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam",
-    link: "",
-    img: { src: "", alt: "" },
-    highlighted: false,
-  },
-  {
-    title: "tapas",
-    price: "13.99",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam",
-    link: "",
-    img: { src: "", alt: "" },
-    highlighted: true,
-  },
-  {
-    title: "tapas",
-    price: "13.99",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam",
-    link: "",
-    img: { src: "", alt: "" },
-    highlighted: true,
-  },
-  {
-    title: "tapas",
-    price: "13.99",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam",
-    link: "",
-    img: { src: "", alt: "" },
-    highlighted: true,
-  },
-];
-
-const HighlightCard = ({ card }: { card: highlightsData }) => {
+export const HighlightCard = ({
+  card,
+  hideFooter = false,
+}: {
+  card: dish;
+  hideFooter?: boolean;
+}) => {
   return (
     <div className={Styles.highlightCard}>
       <figure className={Styles.imageContainer}>
@@ -62,23 +22,25 @@ const HighlightCard = ({ card }: { card: highlightsData }) => {
           <span className={Styles.price}>${card.price}</span>
         </div>
         <p className={Styles.description}>{card.description}</p>
-        <a href={card.link} className={Styles.link}>
-          <span>icon</span>
-          <span>order for delivery</span>
-        </a>
+        {!hideFooter && (
+          <a href={card.link} className={Styles.link}>
+            <span>icon</span>
+            <span>order for delivery</span>
+          </a>
+        )}
       </div>
     </div>
   );
 };
 
-const Carousel = ({ list }: { list: highlightsData[] }) => {
+const Carousel = ({ list }: { list: dish[] }) => {
   return (
     <div className={Styles.carouselContainer}>
       <div className={Styles.carousel}>
         {list
           .filter((card) => card.highlighted)
           .map((card) => (
-            <HighlightCard card={card} />
+            <HighlightCard card={card} key={card.title} />
           ))}
       </div>
     </div>
@@ -91,10 +53,12 @@ const HighLights = () => {
       <div className={Styles.header}>
         <h3 className={Styles.highlightsTitle}>This week specials</h3>
         <div className={Styles.highlightsButtons}>
-          <Button size="small">Menu</Button>
+          <Button size="small">
+            <Link to={"/menu"}>Menu</Link>
+          </Button>
         </div>
       </div>
-      <Carousel list={highlights} />
+      <Carousel list={menuList} />
     </section>
   );
 };

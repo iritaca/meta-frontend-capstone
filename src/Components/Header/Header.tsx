@@ -1,7 +1,7 @@
 import { useState } from "react";
 import LogoSvg from "../../assets/images/Logo.svg";
 import Styles from "./Header.module.scss";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const NAV_OPTIONS: { title: string; value: string }[] = [
   { title: "home", value: "" },
@@ -13,8 +13,10 @@ const NAV_OPTIONS: { title: string; value: string }[] = [
 ];
 
 const HeaderNav = () => {
-  const [selected, setSelected] = useState("");
+  const location = useLocation();
+  const [_, setSelected] = useState("");
 
+  const pathName = location.pathname.replace(/^\/|\/$/g, "");
   return (
     <nav className={Styles.navContainer}>
       <ul className={Styles.navList}>
@@ -22,11 +24,10 @@ const HeaderNav = () => {
           <li
             key={navItem.title}
             className={`${Styles.navItem} ${
-              selected === navItem.value ? Styles.isActive : ""
+              pathName === navItem.value ? Styles.isActive : ""
             }`}
             onClick={() => setSelected(navItem.value)}
           >
-            {/* @Dev - this should be replaced by React.Route */}
             <Link to={`/${navItem.value}`}>{navItem.title}</Link>
           </li>
         ))}

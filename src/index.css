@@ -13,6 +13,16 @@ code {
     monospace;
 }
 
+* {
+  margin: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 ul {
   list-style: none;
   padding: 0;
@@ -27,6 +37,22 @@ h6,
 p {
   margin: 0;
   color: var(--secondary-black);
+  overflow-wrap: break-word;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
 }
 
 a {
@@ -36,8 +62,29 @@ a {
 
 :root {
   --desktopWidth: 1020px;
+  --homeSectionsPadding: 64px;
 }
 
 html {
   scrollbar-gutter: stable;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-rows: auto minmax(620px, auto) auto;
+  width: var(--desktopWidth);
+  margin-inline: auto;
+  grid-gap: 32px;
+  grid-template-areas:
+    "header"
+    "."
+    "footer";
+  justify-items: center;
+}
+.header {
+  grid-area: header;
+}
+
+.footer {
+  grid-area: footer;
 }

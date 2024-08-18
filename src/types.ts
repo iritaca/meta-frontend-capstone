@@ -1,6 +1,6 @@
 interface Card {
   title: string;
-  img: {
+  img?: {
     src: string;
     alt: string;
   };

@@ -1,0 +1,10 @@
+@import "../../Styles/mixins.module.scss";
+.reservationWrapper {
+  width: 100%;
+  max-width: calc(var(--desktopWidth) / 2);
+  padding: 32px;
+  @include cardBorder;
+  form > div:last-of-type {
+    margin-top: 32px;
+  }
+}

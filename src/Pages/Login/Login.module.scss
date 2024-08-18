@@ -1,0 +1,21 @@
+@import "../../Styles/mixins.module.scss";
+
+.login {
+  max-width: var(--desktopWidth);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.loginTitle {
+  margin-bottom: 32px;
+}
+.loginForm {
+  width: 300px;
+  > * + * {
+    margin-top: 32px;
+  }
+}
+.loginButton {
+  width: 100%;
+}

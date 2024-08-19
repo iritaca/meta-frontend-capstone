@@ -1,4 +1,4 @@
-@mixin sectionBg($topPosition, $bgColor, $height) {
+@mixin sectionBg($bgColor, $height) {
   &:after {
     content: "";
     position: absolute;
@@ -6,7 +6,12 @@
     width: 100%;
     z-index: -1;
     height: #{$height};
-    top: #{$topPosition};
+    top: 0;
     background-color: #{$bgColor};
   }
+}
+
+@mixin cardBorder {
+  border: 1px solid #c5c5c5;
+  border-radius: 6px;
 }

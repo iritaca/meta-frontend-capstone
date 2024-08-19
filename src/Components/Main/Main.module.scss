@@ -1,9 +1,6 @@
 .main {
   display: flex;
   flex-direction: column;
-  outline: 1px solid red;
-  max-width: var(--desktopWidth);
-  margin: 32px auto;
 
   > * + * {
     margin-top: 64px;

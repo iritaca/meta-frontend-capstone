@@ -21,13 +21,7 @@ const Hero = () => {
         <img src="" alt="" />
       </figure>
       {showPanel && (
-        <SidePanel
-          variant="reserve"
-          onClose={() => setShowPanel(false)}
-          onSave={() => {
-            // @Dev - add here the action after save is clicked
-          }}
-        />
+        <SidePanel variant="reserve" onClose={() => setShowPanel(false)} />
       )}
     </section>
   );

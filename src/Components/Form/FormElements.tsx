@@ -53,6 +53,7 @@ export const FormInput: FC<FormInputProps> = ({
             name={inputId}
             type={type}
             onBlur={handleBlur}
+            data-testId={`input-${inputId}`}
             {...rest}
           />
           {requiredAndEmpty && <RequieredMessage />}
@@ -88,6 +89,7 @@ export const FormSelect = ({
         onChange={onChange}
         value={value}
         onBlur={handleBlur}
+        data-testId={`select-${id}`}
       >
         {options.map((option) => (
           <option key={option}>{option}</option>

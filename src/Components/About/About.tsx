@@ -21,9 +21,9 @@ const About = () => {
   return (
     <section className={Styles.about}>
       <div className={Styles.aboutDescription}>
-        <h3>Little lemon</h3>
+        <h1>About: Little lemon</h1>
         <span>Chicago</span>
-        <p>
+        <p className={Styles.aboutText}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
           minim veniam

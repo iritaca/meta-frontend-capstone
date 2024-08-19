@@ -8,8 +8,10 @@
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 24px;
   grid-template-rows: repeat(2, 1fr);
+  padding: var(--homeSectionsPadding) calc(var(--homeSectionsPadding) / 2);
   position: relative;
-  h3 {
+
+  h1 {
     color: var(--primary-yellow);
     font-size: 64px;
   }
@@ -22,8 +24,7 @@
   }
   @include sectionBg(
     $bgColor: var(--primary-green),
-    $height: var(--aboutHeight),
-    $topPosition: 0
+    $height: var(--aboutHeight)
   );
 }
 
@@ -31,8 +32,10 @@
   width: 100%;
   grid-column: 1 / span 2;
   grid-row: 1 /-1;
-  padding-top: 52px;
+  padding-top: calc(var(--homeSectionsPadding) / 2);
+  padding-bottom: calc(var(--homeSectionsPadding) / 2);
 }
+
 .aboutPic {
   position: relative;
   height: 244px;

@@ -1,8 +1,7 @@
 .footer {
+  width: 100%;
   display: flex;
   justify-content: space-between;
-  max-width: var(--desktopWidth);
-  margin: 0 auto;
   padding-bottom: 64px;
   padding-top: 32px;
 }
@@ -20,6 +19,9 @@
 }
 
 .footerColumn {
+  h6 {
+    font-size: 18px;
+  }
   h6 + ul {
     margin-top: 16px;
   }

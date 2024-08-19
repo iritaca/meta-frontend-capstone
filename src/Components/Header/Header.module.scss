@@ -1,10 +1,9 @@
 .header {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-top: 16px;
-  max-width: var(--desktopWidth);
-  margin-inline: auto;
 }
 .navList {
   display: flex;

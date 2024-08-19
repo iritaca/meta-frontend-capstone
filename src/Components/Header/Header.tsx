@@ -36,9 +36,9 @@ const HeaderNav = () => {
   );
 };
 
-const Header = () => {
+const Header = ({ className = "" }: { className?: string }) => {
   return (
-    <div className={Styles.header}>
+    <div className={`${Styles.header} ${className}`}>
       <a href="/" className={Styles.headerLogo}>
         <img src={LogoSvg} alt="Little Lemon logo" />
       </a>

@@ -3,6 +3,15 @@
   gap: 24px;
 }
 
+.testimonial {
+  flex: 1;
+  border-radius: 6px;
+  background-color: #e0e0e0;
+  > *:not(hr) {
+    padding: 16px;
+  }
+}
+
 .rating {
   display: flex;
   gap: 4px;
@@ -16,4 +25,8 @@
       color: var(--primary-green);
     }
   }
+}
+
+.testimonialReview {
+  font-size: 14px;
 }

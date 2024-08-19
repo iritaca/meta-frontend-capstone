@@ -22,23 +22,22 @@
 }
 
 .highlightCard {
+  --cardPadding: 16px;
   flex-basis: calc(calc(100% / 3) - var(--carouselGap));
   flex-shrink: 0;
   background-color: #e0e0e0;
-  border-radius: 3px;
+  border-radius: 6px;
   .highlightData {
-    padding: 16px;
+    padding: var(--cardPadding);
     > * + * {
       margin-top: 16px;
     }
   }
   .imageContainer {
     height: 234px;
-    border: 1px dotted red;
   }
   .header {
-    display: flex;
-    justify-content: space-between;
+    padding: var(--cardPadding) calc(var(--cardPadding) * 2);
   }
 
   .description {

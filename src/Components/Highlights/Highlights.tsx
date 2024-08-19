@@ -13,14 +13,15 @@ export const HighlightCard = ({
 }) => {
   return (
     <div className={Styles.highlightCard}>
-      <figure className={Styles.imageContainer}>
-        <img src={card.img.src} alt={card.img.alt} className={Styles.img} />
-      </figure>
+      <div className={Styles.header}>
+        <h3 className={Styles.title}>{card.title}</h3>
+      </div>
+      {card.img && (
+        <figure className={Styles.imageContainer}>
+          <img src={card.img.src} alt={card.img.alt} className={Styles.img} />
+        </figure>
+      )}
       <div className={Styles.highlightData}>
-        <div className={Styles.header}>
-          <h3 className={Styles.title}>{card.title}</h3>
-          <span className={Styles.price}>${card.price}</span>
-        </div>
         <p className={Styles.description}>{card.description}</p>
         {!hideFooter && (
           <a href={card.link} className={Styles.link}>

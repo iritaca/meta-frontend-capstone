@@ -6,57 +6,49 @@ import { faStar } from "@fortawesome/free-solid-svg-icons";
 const testimonials: testimonialData[] = [
   {
     title: "Tony",
+    rating: 4,
+    review: "Lorem ipsum dolor sit amet",
+  },
+  {
+    title: "Mel",
+    rating: 5,
+    review:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam",
+  },
+  {
+    title: "Andy",
     rating: 3,
     review:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam",
-    img: { src: "", alt: "picture" },
   },
   {
-    title: "Tony",
+    title: "John",
     rating: 5,
     review:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam",
-    img: { src: "", alt: "picture" },
-  },
-  {
-    title: "Tony",
-    rating: 2,
-    review:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam",
-    img: { src: "", alt: "picture" },
-  },
-  {
-    title: "Tony",
-    rating: 5,
-    review:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam",
-    img: { src: "", alt: "picture" },
   },
 ];
 
 const Testimonial = ({ testimonial }: { testimonial: testimonialData }) => {
+  const drawStar = (idx: number, isActive: boolean) => {
+    return (
+      <FontAwesomeIcon
+        icon={faStar}
+        className={`${Styles.ratingStar} ${isActive ? Styles.active : ""}`}
+        key={idx}
+      />
+    );
+  };
   return (
     <div className={Styles.testimonial}>
-      <figure className={Styles.imageContainer}>
-        <img src={testimonial.img.src} alt={testimonial.img.alt} />
-      </figure>
-      <h2>{testimonial.title}</h2>
+      <h2 className={Styles.testimonialTitle}>{testimonial.title}</h2>
       <div className={Styles.rating}>
         {Array(5)
           .fill(undefined)
-          .map((_, index) => (
-            <FontAwesomeIcon
-              icon={faStar}
-              className={`${Styles.ratingStar} ${
-                index < testimonial.rating ? Styles.active : ""
-              }`}
-            />
-          ))}
+          .map((_, idx) => drawStar(idx, idx < testimonial.rating))}
       </div>
-
-      <p>
-        <q>{testimonial.review}</q>
-      </p>
+      <hr />
+      <p className={Styles.testimonialReview}>{testimonial.review}</p>
     </div>
   );
 };
@@ -65,7 +57,10 @@ const Testimonials = () => {
   return (
     <section className={Styles.testimonials}>
       {testimonials.map((testimonial) => (
-        <Testimonial testimonial={testimonial} />
+        <Testimonial
+          testimonial={testimonial}
+          key={`${testimonial.title}-${testimonial.rating}`}
+        />
       ))}
     </section>
   );

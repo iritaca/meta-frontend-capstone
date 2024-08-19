@@ -7,6 +7,7 @@ import Menu from "./Pages/Menu/Menu";
 import About from "./Components/About/About";
 import Reservation from "./Pages/Reservation/Reservation";
 import Login from "./Pages/Login/Login";
+import UnderConstruction from "./Pages/UnderConstruction/UnderConstruction";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/reserve" element={<Reservation />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/order_online" element={<UnderConstruction />} />
       </Routes>
       <Footer className="footer" />
     </div>

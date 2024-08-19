@@ -1,3 +1,5 @@
+@import "../../Styles/mixins.module.scss";
+
 .confirmation {
   --timing: 200ms;
   position: fixed;
@@ -9,6 +11,7 @@
   padding: 20px 30px;
   border-radius: 6px;
   max-width: 560px;
+  @include cardBorder;
   &.show {
     animation: slideMessage var(--timing) ease-in forwards;
   }

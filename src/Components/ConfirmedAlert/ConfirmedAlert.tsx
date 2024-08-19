@@ -14,6 +14,7 @@ const ConfirmationAlert = ({ userData }: { userData: reservation }) => {
       className={`${Styles.confirmation} ${
         isVisible ? Styles.show : Styles.hide
       }`}
+      data-testId="confirmation message"
     >
       <h2>Saved</h2>
       <div className={Styles.userContainer}>

@@ -18,7 +18,7 @@ describe("ReserveTable", () => {
     // Now the panel should be visible
     expect(screen.getByText("Reserve a table")).toBeInTheDocument();
 
-    const saveButton = screen.getByText("save");
+    const saveButton = screen.getByTestId("save-button");
     // Initially the save button is disabled
     expect(saveButton).toBeDisabled();
 

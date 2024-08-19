@@ -25,9 +25,10 @@
     display: flex;
     justify-content: space-between;
     gap: 16px;
-    > button {
+    .sidePanelButtons {
       flex: 1;
       min-width: 0;
+      position: relative;
     }
   }
 }

@@ -4,13 +4,15 @@ import { FormInput, FormSelect } from "../Form/FormElements";
 import Button from "../Button/Button";
 import ConfirmationAlert from "../ConfirmedAlert/ConfirmedAlert";
 import { reservation } from "../../types";
+import Tooltip from "../Tooltip/Tooltip";
 
 interface FormProps {
   onCancel: () => void;
   onSave?: () => void;
+  className?: string;
 }
 
-const ReserveTable = ({ onCancel, onSave }: FormProps) => {
+const ReserveTable = ({ onCancel, onSave, className = "" }: FormProps) => {
   const [submitSuccess, setSubmitSuccess] = useState<boolean | null>(null);
   const [formData, setFormData] = useState<reservation>({
     name: "",
@@ -46,7 +48,10 @@ const ReserveTable = ({ onCancel, onSave }: FormProps) => {
 
   return (
     <>
-      <form onSubmit={handleSubmit} className={Styles.formContainer}>
+      <form
+        onSubmit={handleSubmit}
+        className={`${Styles.formContainer} ${className}`}
+      >
         <FormInput
           label="Name"
           isRequired
@@ -125,11 +130,28 @@ const ReserveTable = ({ onCancel, onSave }: FormProps) => {
         </FormInput>
 
         <div className={Styles.buttonsContainer}>
-          <Button variant="secondary" onClick={onCancel} size="small">
+          <Button
+            variant="secondary"
+            onClick={onCancel}
+            size="small"
+            className={Styles.sidePanelButtons}
+          >
             cancel
           </Button>
-          <Button size="small" type="submit" disabled={saveIsDisabled}>
-            save
+
+          <Button
+            size="small"
+            type="submit"
+            disabled={saveIsDisabled}
+            className={Styles.sidePanelButtons}
+            data-testId="save-button"
+          >
+            <Tooltip
+              label={"Fill name, email, and date to enable"}
+              showTooltip={saveIsDisabled}
+            >
+              save
+            </Tooltip>
           </Button>
         </div>
       </form>

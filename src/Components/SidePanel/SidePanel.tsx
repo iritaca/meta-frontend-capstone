@@ -5,7 +5,7 @@ import ReserveTable from "./ReserveATable";
 interface SidePanelProps {
   variant: "reserve" | "menu";
   onClose: () => void;
-  onSave: () => void;
+  onSave?: () => void;
 }
 
 const SidePanel = ({ onClose, variant, onSave }: SidePanelProps) => {

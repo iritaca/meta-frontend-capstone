@@ -7,7 +7,7 @@ import { reservation } from "../../types";
 
 interface FormProps {
   onCancel: () => void;
-  onSave: () => void;
+  onSave?: () => void;
 }
 
 const ReserveTable = ({ onCancel, onSave }: FormProps) => {
@@ -34,7 +34,11 @@ const ReserveTable = ({ onCancel, onSave }: FormProps) => {
     onSave?.();
   };
 
-  const handleChange = (e: any) => {
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >
+  ) => {
     const { name, value } = e.target;
 
     setFormData((prevData) => ({ ...prevData, [name]: value }));

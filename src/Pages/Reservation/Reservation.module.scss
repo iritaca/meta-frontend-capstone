@@ -2,9 +2,22 @@
 .reservationWrapper {
   width: 100%;
   max-width: calc(var(--desktopWidth) / 2);
-  padding: 32px;
-  @include cardBorder;
-  form > div:last-of-type {
-    margin-top: 32px;
+
+  form {
+    padding: 32px;
+    @include cardBorder;
+
+    & > div:last-of-type {
+      margin-top: 32px;
+    }
   }
+}
+
+.reservationTitle {
+  text-align: center;
+}
+
+.form {
+  margin-top: 32px;
+  width: 100%;
 }
